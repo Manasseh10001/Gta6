@@ -1,0 +1,1194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vice Wire — Grand Theft Auto VI News &amp; Intel</title>
+<meta name="description" content="Vice Wire tracks Grand Theft Auto VI news, screenshots, trailers and release information.">
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+
+
+/* ============================================================
+   TOKENS
+   ============================================================ */
+:root{
+  --ink:        #06070b;
+  --ink-2:      #0d0f18;
+  --dusk:       #160a24;
+  --panel:      #10121c;
+  --line:       rgba(245,243,239,.10);
+  --line-soft:  rgba(245,243,239,.06);
+
+  --text-hi:    #f6f4ef;
+  --text-mid:   #a8a4b6;
+  --text-low:   #6b687a;
+
+  --pink:       #ff3d7a;
+  --orange:     #ff8a4c;
+  --violet:     #7c4dff;
+  --teal:       #22d3c5;
+
+  --sunset: linear-gradient(100deg, var(--pink) 0%, var(--orange) 45%, #ffd166 100%);
+
+  --radius: 3px;
+  --maxw: 1180px;
+}
+
+*{ margin:0; padding:0; box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+body{
+  background:
+    radial-gradient(1100px 520px at 85% -10%, rgba(124,77,255,.20), transparent 60%),
+    radial-gradient(900px 500px at 5% 10%, rgba(255,61,122,.14), transparent 55%),
+    var(--ink);
+  color: var(--text-hi);
+  font-family: 'Inter', sans-serif;
+  min-height:100vh;
+  -webkit-font-smoothing: antialiased;
+}
+a{ color:inherit; text-decoration:none; }
+button{ font-family:inherit; }
+img{ display:block; max-width:100%; }
+.wrap{ max-width: var(--maxw); margin:0 auto; padding:0 32px; }
+
+::selection{ background: var(--pink); color:#fff; }
+::-webkit-scrollbar{ width:10px; }
+::-webkit-scrollbar-track{ background:var(--ink); }
+::-webkit-scrollbar-thumb{ background: linear-gradient(var(--pink), var(--violet)); border-radius:10px; }
+:focus-visible{ outline: 2px solid var(--teal); outline-offset: 3px; }
+
+@media (prefers-reduced-motion: reduce){
+  *{ animation-duration:.001ms !important; animation-iteration-count:1 !important; transition-duration:.001ms !important; scroll-behavior:auto !important; }
+}
+
+.hairline{ height:1px; background: linear-gradient(90deg, transparent, var(--line), transparent); border:0; }
+
+/* ============================================================
+   NAV
+   ============================================================ */
+.navbar{ position:sticky; top:0; z-index:1000; background: rgba(6,7,11,.72); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom:1px solid var(--line-soft); }
+.navbar .wrap{ height:76px; display:flex; align-items:center; justify-content:space-between; }
+.brand{ display:flex; align-items:baseline; gap:9px; font-family:'Unbounded', sans-serif; font-weight:800; font-size:19px; letter-spacing:-.02em; }
+.brand .dot{ color: var(--pink); }
+.brand small{ font-family:'Space Mono', monospace; font-weight:400; font-size:10px; color: var(--text-low); letter-spacing:.12em; }
+.nav-links{ display:flex; align-items:center; gap:36px; list-style:none; }
+.nav-links a{ font-size:13px; font-weight:500; color: var(--text-mid); padding-bottom:3px; border-bottom:1px solid transparent; transition: color .25s ease, border-color .25s ease; }
+.nav-links a:hover{ color: var(--text-hi); border-color: var(--pink); }
+.nav-cta{ font-size:12.5px; font-weight:600; padding:10px 18px; border:1px solid var(--line); border-radius: var(--radius); transition: border-color .25s ease, background .25s ease; }
+.nav-cta:hover{ border-color: var(--pink); background: rgba(255,61,122,.08); }
+.nav-toggle{ display:none; background:none; border:1px solid var(--line); color:var(--text-hi); width:40px; height:40px; border-radius:var(--radius); font-size:18px; cursor:pointer; }
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero{ position:relative; border-bottom:1px solid var(--line-soft); overflow:hidden; }
+.hero .wrap{ display:grid; grid-template-columns: 1.05fr .95fr; align-items:center; gap:40px; padding:60px 32px 52px; min-height:0; }
+.hero-copy{ position:relative; z-index:2; max-width:560px; }
+.eyebrow-row{ display:flex; align-items:center; gap:10px; font-family:'Space Mono', monospace; font-size:11.5px; letter-spacing:.08em; color: var(--text-mid); margin-bottom:22px; }
+.eyebrow-row .pulse{ width:8px; height:8px; border-radius:50%; background: var(--pink); box-shadow:0 0 0 0 rgba(255,61,122,.6); animation: pulse 2.2s infinite; }
+@keyframes pulse{ 0%{ box-shadow:0 0 0 0 rgba(255,61,122,.55);} 70%{ box-shadow:0 0 0 12px rgba(255,61,122,0);} 100%{ box-shadow:0 0 0 0 rgba(255,61,122,0);} }
+.hero h1{ font-family:'Unbounded', sans-serif; font-weight:800; font-size: clamp(40px, 5.4vw, 66px); line-height:.98; letter-spacing:-.02em; margin-bottom:22px; }
+.hero h1 em{ font-style:normal; background: var(--sunset); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+.hero p{ color: var(--text-mid); font-size:16px; line-height:1.7; max-width:460px; margin-bottom:34px; }
+.hero-actions{ display:flex; flex-wrap:wrap; gap:14px; margin-bottom:28px; position:relative; }
+.btn{ border:none; cursor:pointer; font-weight:600; font-size:14px; padding:15px 24px; border-radius: var(--radius); transition: transform .25s ease, box-shadow .25s ease, background .25s ease, border-color .25s ease; display:inline-flex; align-items:center; gap:8px; }
+.btn:hover{ transform: translateY(-2px); }
+.btn:active{ transform: translateY(0) scale(.96); transition-duration:.1s; }
+.btn.is-success{ background: linear-gradient(100deg, var(--teal), #7fe9de) !important; color:#04211d !important; box-shadow: 0 0 0 4px rgba(34,211,197,.18); }
+.btn-primary{ background: var(--sunset); color:#1a0510; box-shadow: 0 14px 34px rgba(255,120,70,.22); }
+.btn-ghost{ background:transparent; border:1px solid var(--line); color: var(--text-hi); }
+.btn-ghost:hover{ border-color: var(--teal); background: rgba(34,211,197,.06); }
+.hero-meta{ display:flex; gap:28px; flex-wrap:wrap; padding-top:22px; border-top:1px solid var(--line-soft); }
+.hero-meta div{ display:flex; flex-direction:column; gap:4px; }
+.hero-meta span{ font-size:10.5px; color:var(--text-low); font-family:'Space Mono', monospace; letter-spacing:.06em; }
+.hero-meta strong{ font-size:14px; font-weight:600; }
+.hero-art{ position:relative; z-index:1; height:100%; min-height:340px; }
+.hero-art svg{ width:100%; height:100%; display:block; }
+
+/* ============================================================
+   COUNTDOWN BAR — sits directly below the header, first thing
+   on screen. Flip-clock digits + a rotating tagline underneath.
+   ============================================================ */
+.countdown-bar{
+  border-bottom:1px solid var(--line-soft);
+  background: linear-gradient(90deg, rgba(255,61,122,.08), rgba(124,77,255,.06));
+}
+.cb-inner{
+  display:flex; align-items:center; justify-content:space-between;
+  gap:24px; flex-wrap:wrap;
+  padding:22px 32px;
+}
+.cb-label{ display:flex; align-items:flex-start; gap:12px; }
+.cb-label .pulse{ margin-top:6px; flex-shrink:0; }
+.cb-title{ font-family:'Unbounded', sans-serif; font-size:14px; font-weight:600; margin-bottom:4px; }
+.cb-tagline{
+  font-family:'Space Mono', monospace; font-size:11px; color: var(--text-low);
+  min-height:14px;
+  animation: taglineIn .5s ease;
+}
+@keyframes taglineIn{ from{ opacity:0; transform: translateY(4px); } to{ opacity:1; transform:translateY(0); } }
+
+.flip-clock{ display:flex; align-items:center; gap:12px; perspective:400px; }
+.flip-unit{ display:flex; flex-direction:column; align-items:center; gap:8px; }
+.flip-card{
+  position:relative;
+  width:56px; height:44px;
+  transform-style: preserve-3d;
+  transition: transform .55s cubic-bezier(.4,.15,.2,1);
+}
+.flip-card.flip{ transform: rotateX(-180deg); }
+.flip-face{
+  position:absolute; inset:0;
+  display:flex; align-items:center; justify-content:center;
+  background: var(--ink-2);
+  border:1px solid var(--line);
+  font-family:'Unbounded', sans-serif; font-size:20px; font-weight:700;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-hi);
+  backface-visibility: hidden;
+}
+.flip-face.back{ transform: rotateX(180deg); background: linear-gradient(160deg, rgba(255,61,122,.12), rgba(124,77,255,.10)); }
+.flip-face::after{
+  content:""; position:absolute; left:0; right:0; top:50%;
+  height:1px; background: rgba(6,7,11,.5);
+}
+.flip-label{ font-size:9.5px; color:var(--text-low); text-transform:uppercase; letter-spacing:.1em; font-family:'Space Mono', monospace; }
+.flip-sep{ color: var(--text-low); font-size:20px; font-weight:700; margin-bottom:22px; }
+
+@media (max-width:760px){
+  .cb-inner{ padding:18px 20px; gap:16px; }
+  .flip-clock{ gap:7px; }
+  .flip-card{ width:42px; height:36px; }
+  .flip-face{ font-size:16px; }
+  .flip-sep{ font-size:16px; margin-bottom:18px; }
+}
+
+/* ============================================================
+   ADD TO CALENDAR
+   ============================================================ */
+.cal-dropdown{ position:relative; }
+.cal-menu{
+  position:absolute; top:calc(100% + 8px); left:0; z-index:60;
+  min-width:230px;
+  display:none; flex-direction:column;
+  background: var(--ink-2);
+  border:1px solid var(--line);
+  box-shadow: 0 20px 45px rgba(0,0,0,.4);
+}
+.cal-menu.show{ display:flex; }
+.cal-menu a, .cal-menu button{
+  padding:13px 16px;
+  font-size:12.5px; text-align:left;
+  background:none; border:none; border-bottom:1px solid var(--line-soft);
+  color: var(--text-mid); cursor:pointer; font-family:inherit;
+  transition: color .2s ease, background .2s ease;
+}
+.cal-menu a:last-child, .cal-menu button:last-child{ border-bottom:none; }
+.cal-menu a:hover, .cal-menu button:hover{ color: var(--text-hi); background: rgba(255,61,122,.08); }
+
+/* ============================================================
+   EMOTIONAL DESIGN — first-impression entrance, micro-interactions,
+   celebratory feedback. Small, purposeful, never gratuitous.
+   ============================================================ */
+
+/* first-impression: hero elements settle in on load rather than
+   snapping into place, so the first five seconds feel considered */
+@keyframes heroSettle{
+  from{ opacity:0; transform: translateY(16px); }
+  to{ opacity:1; transform: translateY(0); }
+}
+.hero-copy > *{ opacity:0; animation: heroSettle .7s cubic-bezier(.2,.8,.2,1) forwards; }
+.hero-copy > *:nth-child(1){ animation-delay:.05s; }
+.hero-copy > *:nth-child(2){ animation-delay:.14s; }
+.hero-copy > *:nth-child(3){ animation-delay:.22s; }
+.hero-copy > *:nth-child(4){ animation-delay:.30s; }
+.hero-copy > *:nth-child(5){ animation-delay:.38s; }
+.hero-copy > *:nth-child(6){ animation-delay:.46s; }
+.hero-art{ opacity:0; animation: heroSettle 1s cubic-bezier(.2,.8,.2,1) .3s forwards; }
+
+/* countdown "aliveness" now comes from the flip-card animation
+   itself (see .flip-card.flip above) rather than a digit pulse */
+
+/* small win celebration: a short sparkle burst fired from a button
+   on success (subscribe, calendar add) instead of a flat state swap */
+.sparkle-field{ position:absolute; inset:0; pointer-events:none; overflow:visible; }
+.sparkle{
+  position:absolute; width:5px; height:5px; border-radius:50%;
+  background: var(--teal);
+  opacity:1;
+  animation: sparkleFly .7s cubic-bezier(.2,.8,.3,1) forwards;
+}
+@keyframes sparkleFly{
+  from{ transform: translate(0,0) scale(1); opacity:1; }
+  to{ transform: translate(var(--sx), var(--sy)) scale(.2); opacity:0; }
+}
+
+/* toast: quiet, low-drama confirmation instead of a blocking alert() */
+.toast-stack{
+  position:fixed; right:20px; bottom:20px; z-index:4000;
+  display:flex; flex-direction:column; gap:10px;
+  align-items:flex-end;
+}
+.toast{
+  display:flex; align-items:center; gap:10px;
+  padding:14px 18px;
+  background: var(--ink-2);
+  border:1px solid var(--line);
+  border-left:3px solid var(--teal);
+  box-shadow: 0 18px 40px rgba(0,0,0,.4);
+  font-size:12.5px; color: var(--text-hi);
+  max-width:320px;
+  animation: toastIn .35s cubic-bezier(.2,.8,.2,1) forwards, toastOut .35s ease forwards 3.2s;
+}
+.toast.error{ border-left-color: var(--pink); }
+.toast .toast-icon{ font-size:14px; line-height:1; }
+@keyframes toastIn{ from{ opacity:0; transform: translateY(10px) scale(.97); } to{ opacity:1; transform:translateY(0) scale(1); } }
+@keyframes toastOut{ from{ opacity:1; } to{ opacity:0; transform: translateY(6px); } }
+
+/* filter buttons: a quick, tactile press instead of an instant snap */
+.filter-btn{ transform: scale(1); }
+.filter-btn:active{ transform: scale(.94); }
+
+/* news rows: reward the click that opens an article with a
+   brief highlight sweep, so the interaction feels acknowledged */
+@keyframes rowAck{ 0%{ background: rgba(255,61,122,.10); } 100%{ background: transparent; } }
+.news-row.clicked{ animation: rowAck .5s ease; }
+
+@media (prefers-reduced-motion: reduce){
+  .hero-copy > *, .hero-art{ opacity:1; animation:none !important; }
+}
+
+/* ============================================================
+   SECTION SHELL
+   ============================================================ */
+.section{ padding: 84px 32px; }
+.section-head{ display:flex; align-items:flex-end; justify-content:space-between; gap:20px; flex-wrap:wrap; margin-bottom: 38px; }
+.section-head h2{ font-family:'Unbounded', sans-serif; font-size: clamp(26px, 3vw, 36px); font-weight:700; letter-spacing:-.01em; }
+.section-head .sub{ color: var(--text-low); font-size:13px; max-width:360px; text-align:right; }
+
+/* ============================================================
+   FEATURED + NEWS
+   ============================================================ */
+.feature-row{ display:grid; grid-template-columns: 1.3fr 1fr; gap:0; border:1px solid var(--line); margin-bottom:56px; overflow:hidden; }
+.feature-media{ position:relative; min-height:380px; background: var(--panel); overflow:hidden; }
+.feature-media img{ width:100%; height:100%; object-fit:cover; position:absolute; inset:0; }
+.feature-body{ padding:44px; display:flex; flex-direction:column; justify-content:center; border-left:1px solid var(--line); background: var(--ink-2); }
+.tag-chip{ display:inline-flex; width:fit-content; font-family:'Space Mono', monospace; font-size:10.5px; letter-spacing:.08em; color: var(--pink); border:1px solid rgba(255,61,122,.3); padding:5px 10px; margin-bottom:18px; }
+.feature-body h3{ font-size:26px; line-height:1.25; font-weight:700; margin-bottom:16px; letter-spacing:-.01em; }
+.feature-body p{ color:var(--text-mid); font-size:13.5px; line-height:1.75; margin-bottom:24px; }
+.link-arrow{ font-size:13px; font-weight:600; cursor:pointer; display:inline-flex; align-items:center; gap:6px; border-bottom:1px solid var(--line); padding-bottom:2px; transition: border-color .25s ease, color .25s ease, gap .25s ease; width:fit-content; background:none; border-top:none; border-left:none; border-right:none; color:var(--text-hi); }
+.link-arrow:hover{ border-color: var(--pink); color:var(--pink); gap:10px; }
+
+.controls{ display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; margin-bottom:28px; }
+.filters{ display:flex; gap:6px; flex-wrap:wrap; }
+.filter-btn{ background:transparent; border:1px solid var(--line); color: var(--text-mid); padding:9px 16px; font-size:12px; font-weight:500; cursor:pointer; transition:.25s ease; border-radius: var(--radius); }
+.filter-btn:hover, .filter-btn.active{ color:var(--text-hi); border-color: var(--pink); background: rgba(255,61,122,.08); }
+.search-box input{ width:240px; padding:10px 14px; border:1px solid var(--line); background: var(--panel); color:var(--text-hi); border-radius: var(--radius); outline:none; font-size:12.5px; transition: .25s ease; }
+.search-box input::placeholder{ color: var(--text-low); }
+.search-box input:focus{ border-color: var(--teal); width:280px; }
+
+.news-layout{ display:grid; grid-template-columns: 1fr 300px; gap:48px; }
+.news-list{ display:flex; flex-direction:column; }
+.news-row{ display:grid; grid-template-columns: 150px 1fr; gap:24px; padding: 26px 0; border-bottom:1px solid var(--line-soft); cursor:pointer; opacity:0; animation: rowIn .6s ease forwards; background:none; border-left:none; border-right:none; border-top:none; text-align:left; width:100%; color:inherit; font-family:inherit; }
+.news-row:first-child{ padding-top:0; }
+@keyframes rowIn{ from{ opacity:0; transform:translateY(14px); } to{ opacity:1; transform:translateY(0); } }
+.news-thumb{ height:100px; overflow:hidden; background: var(--panel); position:relative; }
+.news-thumb img{ width:100%; height:100%; object-fit:cover; transition: transform .6s ease, filter .5s ease; filter:saturate(.92); }
+.news-row:hover .news-thumb img{ transform:scale(1.07); filter:saturate(1.1) brightness(1.03); }
+.news-row-body{ display:flex; flex-direction:column; justify-content:center; }
+.news-meta-line{ display:flex; gap:10px; align-items:center; margin-bottom:9px; }
+.news-cat{ font-family:'Space Mono', monospace; font-size:10.5px; letter-spacing:.06em; color:var(--teal); }
+.news-date{ font-size:11px; color:var(--text-low); }
+.news-row h4{ font-size:16.5px; font-weight:600; line-height:1.4; margin-bottom:6px; transition:color .25s ease; }
+.news-row:hover h4{ color: var(--pink); }
+.news-row p{ font-size:12.5px; color: var(--text-low); line-height:1.6; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+.empty-state{ color:var(--text-low); font-size:13px; padding:30px 0; line-height:1.7; }
+.empty-state code{ color: var(--teal); }
+
+.aside-block{ margin-bottom:36px; }
+.aside-block h3{ font-family:'Unbounded', sans-serif; font-size:14.5px; font-weight:700; margin-bottom:20px; padding-bottom:14px; border-bottom:1px solid var(--line); }
+.rank-item{ display:flex; gap:14px; padding:14px 0; border-bottom:1px solid var(--line-soft); cursor:pointer; background:none; border-left:none; border-right:none; border-top:none; width:100%; text-align:left; color:inherit; font-family:inherit; }
+.rank-item:last-child{ border-bottom:none; }
+.rank-num{ font-family:'Unbounded', sans-serif; font-size:19px; font-weight:800; color: transparent; -webkit-text-stroke: 1px var(--text-low); min-width:28px; }
+.rank-item:hover .rank-num{ -webkit-text-stroke: 1px var(--pink); }
+.rank-title{ font-size:12.5px; line-height:1.55; color:var(--text-mid); transition:color .25s ease; }
+.rank-item:hover .rank-title{ color: var(--text-hi); }
+
+.quick-links a{ display:block; font-size:13px; font-weight:500; padding:11px 0; border-bottom:1px solid var(--line-soft); color: var(--text-mid); transition: color .25s ease, padding-left .25s ease; }
+.quick-links a:last-child{ border-bottom:none; }
+.quick-links a:hover{ color: var(--text-hi); padding-left:6px; }
+
+.notify-card{ padding:26px; border:1px solid var(--line); background: linear-gradient(160deg, rgba(255,61,122,.08), rgba(124,77,255,.06)); }
+.notify-card h3{ font-family:'Unbounded', sans-serif; font-size:14.5px; margin-bottom:10px; border:none; padding:0; }
+.notify-card p{ font-size:12px; color:var(--text-mid); line-height:1.6; margin-bottom:16px; }
+.notify-form{ display:flex; gap:8px; }
+.notify-form input{ flex:1; min-width:0; padding:11px 12px; background: rgba(6,7,11,.5); border:1px solid var(--line); color:var(--text-hi); font-size:12px; outline:none; border-radius: var(--radius); }
+.notify-form input:focus{ border-color: var(--teal); }
+.notify-form button{ padding:11px 16px; background: var(--text-hi); color: var(--ink); border:none; font-weight:700; font-size:12px; cursor:pointer; border-radius: var(--radius); }
+.notify-note{ font-size:11px; color:var(--text-low); margin-top:10px; }
+
+/* ============================================================
+   VIDEOS
+   ============================================================ */
+.video-grid{ display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:22px; }
+.video-card{ border:1px solid var(--line); background: var(--panel); transition:.35s ease; }
+.video-card:hover{ border-color: rgba(255,61,122,.4); transform: translateY(-4px); }
+.video-frame{ position:relative; width:100%; padding-top:56.25%; background:#000; }
+.video-frame iframe{ position:absolute; inset:0; width:100%; height:100%; border:0; }
+.video-info{ padding:18px 20px; }
+.video-info h4{ font-size:14px; font-weight:600; margin-bottom:6px; }
+.video-info p{ font-size:11.5px; color:var(--text-low); line-height:1.55; }
+
+/* ============================================================
+   SCREENSHOTS
+   ============================================================ */
+.shot-grid{ display:grid; grid-template-columns: repeat(4, minmax(0,1fr)); grid-auto-rows: 190px; gap:10px; }
+.shot{ position:relative; overflow:hidden; cursor:pointer; border:1px solid var(--line-soft); background:none; padding:0; }
+.shot:nth-child(6n+1){ grid-column: span 2; grid-row: span 2; }
+.shot img{ width:100%; height:100%; object-fit:cover; transition: transform .6s ease, filter .5s ease; }
+.shot:hover img{ transform:scale(1.06); filter:brightness(1.08); }
+.shot-tag{ position:absolute; left:12px; bottom:12px; z-index:2; font-family:'Space Mono', monospace; font-size:10px; letter-spacing:.05em; padding:5px 9px; background: rgba(6,7,11,.6); backdrop-filter: blur(6px); border:1px solid var(--line); color:var(--text-hi); }
+.shot::after{ content:""; position:absolute; inset:0; background: linear-gradient(0deg, rgba(6,7,11,.55), transparent 55%); pointer-events:none; }
+
+/* ============================================================
+   RELEASE STRIP
+   ============================================================ */
+.release-panel{ border:1px solid var(--line); background: radial-gradient(700px 300px at 90% 0%, rgba(255,61,122,.10), transparent 60%); display:grid; grid-template-columns: repeat(4, 1fr); }
+.release-cell{ padding: 34px 30px; border-left:1px solid var(--line); }
+.release-cell:first-child{ border-left:none; }
+.release-cell span{ display:block; font-family:'Space Mono', monospace; font-size:10.5px; color:var(--text-low); letter-spacing:.06em; margin-bottom:12px; }
+.release-cell strong{ font-family:'Unbounded', sans-serif; font-size:18px; font-weight:600; }
+
+/* ============================================================
+   MODAL / LIGHTBOX
+   ============================================================ */
+.modal{ position:fixed; inset:0; z-index:2000; display:none; align-items:center; justify-content:center; padding:24px; background: rgba(4,5,8,.82); backdrop-filter: blur(10px); opacity:0; transition: opacity .3s ease; }
+.modal.show{ display:flex; opacity:1; }
+.modal-panel{ width:min(760px,100%); max-height:88vh; overflow-y:auto; background: var(--ink-2); border:1px solid var(--line); padding:40px; position:relative; transform: scale(.95) translateY(16px); transition:.3s ease; }
+.modal.show .modal-panel{ transform:scale(1) translateY(0); }
+.modal-close{ position:absolute; top:16px; right:18px; width:34px; height:34px; border:1px solid var(--line); background: rgba(255,255,255,.04); color:#fff; cursor:pointer; font-size:18px; }
+.modal-panel h2{ font-family:'Unbounded', sans-serif; font-size:26px; line-height:1.3; margin: 8px 0 10px; }
+.modal-date{ font-size:11px; color:var(--text-low); margin-bottom:24px; }
+.modal-body{ color:var(--text-mid); font-size:14px; line-height:1.85; white-space:pre-line; }
+
+.lightbox{ position:fixed; inset:0; z-index:3000; display:none; align-items:center; justify-content:center; background: rgba(3,4,7,.95); padding:30px; }
+.lightbox.show{ display:flex; }
+.lightbox img{ max-width:92vw; max-height:85vh; box-shadow:0 30px 90px rgba(0,0,0,.6); }
+.lightbox-close{ position:fixed; top:22px; right:26px; width:44px; height:44px; background: rgba(255,255,255,.08); border:1px solid var(--line); color:#fff; cursor:pointer; font-size:22px; }
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer{ border-top:1px solid var(--line-soft); padding:56px 32px 40px; }
+.footer-grid{ display:flex; justify-content:space-between; gap:40px; flex-wrap:wrap; margin-bottom:40px; }
+.footer-brand .brand{ margin-bottom:14px; }
+.footer-brand p{ color:var(--text-low); font-size:12.5px; max-width:320px; line-height:1.7; }
+.footer-cols{ display:flex; gap:60px; flex-wrap:wrap; }
+.footer-col span{ display:block; font-family:'Space Mono', monospace; font-size:10.5px; color:var(--text-low); letter-spacing:.08em; margin-bottom:16px; }
+.footer-col a{ display:block; font-size:12.5px; color:var(--text-mid); margin-bottom:10px; }
+.footer-col a:hover{ color:var(--text-hi); }
+.footer-bottom{ display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap; color:var(--text-low); font-size:11.5px; padding-top:26px; border-top:1px solid var(--line-soft); }
+.db-flag{ display:inline-flex; align-items:center; gap:8px; font-family:'Space Mono', monospace; font-size:10.5px; color: var(--text-low); }
+.db-flag .pip{ width:7px; height:7px; border-radius:50%; background: var(--teal); }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width:1000px){
+  .news-layout{ grid-template-columns:1fr; }
+  .video-grid{ grid-template-columns:1fr 1fr; }
+  .shot-grid{ grid-template-columns:1fr 1fr 1fr; }
+  .release-panel{ grid-template-columns:1fr 1fr; }
+  .release-cell:nth-child(3){ border-left:none; }
+  .feature-row{ grid-template-columns:1fr; }
+  .feature-body{ border-left:none; border-top:1px solid var(--line); }
+}
+@media (max-width:760px){
+  .wrap{ padding:0 20px; }
+  .nav-links{ display:none; }
+  .nav-toggle{ display:block; }
+  .hero .wrap{ grid-template-columns:1fr; padding:56px 20px 60px; }
+  .hero-art{ display:none; }
+  .section{ padding:60px 20px; }
+  .video-grid{ grid-template-columns:1fr; }
+  .shot-grid{ grid-template-columns:1fr 1fr; grid-auto-rows:160px; }
+  .shot:nth-child(6n+1){ grid-column:span 2; grid-row:span 1; }
+  .release-panel{ grid-template-columns:1fr; }
+  .release-cell{ border-left:none; border-top:1px solid var(--line); }
+  .release-cell:first-child{ border-top:none; }
+  .controls{ flex-direction:column; align-items:stretch; }
+  .search-box input, .search-box input:focus{ width:100%; }
+  .news-row{ grid-template-columns:100px 1fr; gap:16px; }
+  .strip .wrap{ flex-direction:column; align-items:flex-start; }
+  .footer-grid{ flex-direction:column; }
+}
+
+</style>
+</head>
+<body>
+
+
+<!-- =====================================================
+     NAV
+     ===================================================== -->
+<nav class="navbar">
+  <div class="wrap">
+    <a href="#top" class="brand">VICE<span class="dot">·</span>WIRE <small>GTA VI INTEL</small></a>
+    <ul class="nav-links">
+      <li><a href="#news">Briefing</a></li>
+      <li><a href="#videos">Trailers</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#release">Release</a></li>
+    </ul>
+    <a href="#notify" class="nav-cta">Get updates</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">☰</button>
+  </div>
+</nav>
+
+<!-- =====================================================
+     COUNTDOWN BAR — sits right under the header, first thing
+     visible on load. Flip-clock digits + a rotating tagline.
+     ===================================================== -->
+<section class="countdown-bar" id="countdownBar">
+  <div class="wrap cb-inner">
+    <div class="cb-label">
+      <span class="pulse"></span>
+      <div>
+        <div class="cb-title">Grand Theft Auto VI drops in</div>
+        <div class="cb-tagline" id="cbTagline">Vice City is warming up the neon.</div>
+      </div>
+    </div>
+
+    <div class="flip-clock">
+      <div class="flip-unit">
+        <div class="flip-card" id="flip-days">
+          <div class="flip-face front">00</div>
+          <div class="flip-face back">00</div>
+        </div>
+        <span class="flip-label">Days</span>
+      </div>
+      <div class="flip-sep">:</div>
+      <div class="flip-unit">
+        <div class="flip-card" id="flip-hours">
+          <div class="flip-face front">00</div>
+          <div class="flip-face back">00</div>
+        </div>
+        <span class="flip-label">Hrs</span>
+      </div>
+      <div class="flip-sep">:</div>
+      <div class="flip-unit">
+        <div class="flip-card" id="flip-minutes">
+          <div class="flip-face front">00</div>
+          <div class="flip-face back">00</div>
+        </div>
+        <span class="flip-label">Min</span>
+      </div>
+      <div class="flip-sep">:</div>
+      <div class="flip-unit">
+        <div class="flip-card" id="flip-seconds">
+          <div class="flip-face front">00</div>
+          <div class="flip-face back">00</div>
+        </div>
+        <span class="flip-label">Sec</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =====================================================
+     HERO
+     ===================================================== -->
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-copy">
+      <div class="eyebrow-row"><span class="pulse"></span> Independent · unofficial · updated daily</div>
+      <h1>Everything landing<br>on the road to <em>Leonida.</em></h1>
+      <p>Vice Wire follows Grand Theft Auto VI from trailer breakdowns to release-day logistics — a fan-run briefing for people who don't want to miss the next drop.</p>
+
+      <div class="hero-actions">
+        <a href="#news" class="btn btn-primary">Read the briefing</a>
+        <a href="#videos" class="btn btn-ghost">Watch the trailers</a>
+        <div class="cal-dropdown">
+          <button type="button" class="btn btn-ghost" id="calBtn" onclick="toggleCalMenu(event)">
+            Add to calendar <span id="calArrow">▾</span>
+          </button>
+          <div class="cal-menu" id="calMenu">
+            <a href="#" onclick="return addToGoogle(event)">Google Calendar</a>
+            <a href="#" onclick="return addToOutlook(event)">Outlook.com</a>
+            <button type="button" onclick="downloadICS(event)">Download .ics (Apple / other)</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-meta">
+        <div><span>RELEASE WINDOW</span><strong>Nov 19, 2026</strong></div>
+        <div><span>PLATFORMS</span><strong>PS5 · Xbox Series X|S</strong></div>
+        <div><span>SETTING</span><strong>Leonida, incl. Vice City</strong></div>
+        <div><span>LEADS</span><strong>Jason &amp; Lucia</strong></div>
+      </div>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <svg viewBox="0 0 600 500" preserveAspectRatio="xMidYMid meet">
+        <defs>
+          <linearGradient id="sunGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#ffd166"/><stop offset="55%" stop-color="#ff8a4c"/><stop offset="100%" stop-color="#ff3d7a"/>
+          </linearGradient>
+          <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#160a24"/><stop offset="100%" stop-color="#06070b"/>
+          </linearGradient>
+          <linearGradient id="oceanGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#0d0f18"/><stop offset="100%" stop-color="#06070b"/>
+          </linearGradient>
+        </defs>
+        <rect x="0" y="0" width="600" height="320" fill="url(#skyGrad)"/>
+        <circle cx="300" cy="230" r="120" fill="url(#sunGrad)"/>
+        <g fill="#06070b">
+          <rect x="180" y="255" width="600" height="7"/>
+          <rect x="180" y="270" width="600" height="9"/>
+          <rect x="180" y="288" width="600" height="12"/>
+          <rect x="180" y="308" width="600" height="16"/>
+        </g>
+        <rect x="0" y="320" width="600" height="180" fill="url(#oceanGrad)"/>
+        <g opacity="0.5" stroke="#ff8a4c" stroke-width="1">
+          <line x1="0" y1="340" x2="600" y2="340"/>
+          <line x1="0" y1="365" x2="600" y2="365"/>
+          <line x1="0" y1="395" x2="600" y2="395"/>
+          <line x1="0" y1="430" x2="600" y2="430"/>
+          <line x1="0" y1="470" x2="600" y2="470"/>
+        </g>
+        <g fill="#0a0b12">
+          <rect x="40" y="200" width="26" height="120"/>
+          <rect x="72" y="160" width="22" height="160"/>
+          <rect x="100" y="220" width="30" height="100"/>
+          <rect x="460" y="180" width="24" height="140"/>
+          <rect x="490" y="230" width="28" height="90"/>
+          <rect x="524" y="150" width="20" height="170"/>
+        </g>
+        <g fill="#12081f" opacity=".9">
+          <path d="M480 320 C486 260 476 250 470 235 C465 250 460 258 466 320 Z"/>
+          <path d="M500 320 C503 280 498 270 494 260 C490 270 487 278 490 320 Z"/>
+          <path d="M60 320 C64 270 58 258 54 245 C50 258 46 268 50 320 Z"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+</header>
+
+
+<!-- =====================================================
+     NEWS
+     ===================================================== -->
+<section class="section" id="news">
+  <div class="wrap">
+    
+<div class="feature-row">
+  <div class="feature-media">
+    <img src="data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20400%20300%22%3E%0A%3Cdefs%3E%3ClinearGradient%20id%3D%22gstatic%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%0A%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%23ff3d7a%22/%3E%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%237c4dff%22/%3E%0A%3C/linearGradient%3E%3C/defs%3E%3Crect%20width%3D%22400%22%20height%3D%22300%22%20fill%3D%22%230d0f18%22/%3E%0A%3Crect%20width%3D%22400%22%20height%3D%22300%22%20fill%3D%22url%28%23gstatic%29%22%20opacity%3D%22.28%22/%3E%0A%3Cline%20x1%3D%220%22%20y1%3D%22210%22%20x2%3D%22400%22%20y2%3D%22210%22%20stroke%3D%22%23ff3d7a%22%20stroke-opacity%3D%22.5%22/%3E%0A%3Cline%20x1%3D%220%22%20y1%3D%22235%22%20x2%3D%22400%22%20y2%3D%22235%22%20stroke%3D%22%23ff3d7a%22%20stroke-opacity%3D%22.35%22/%3E%0A%3Cline%20x1%3D%220%22%20y1%3D%22265%22%20x2%3D%22400%22%20y2%3D%22265%22%20stroke%3D%22%23ff3d7a%22%20stroke-opacity%3D%22.2%22/%3E%0A%3C/svg%3E" alt="Grand Theft Auto VI is headed back to Vice City" id="featuredImage">
+  </div>
+  <div class="feature-body">
+    <div class="tag-chip">News</div>
+    <h3>Grand Theft Auto VI is headed back to Vice City</h3>
+    <p>Grand Theft Auto VI returns to the state of Leonida, bringing Jason and Lucia into a new Vice City story.</p>
+    <button class="link-arrow" onclick='openArticle({"id": 1, "title": "Grand Theft Auto VI is headed back to Vice City", "category": "News", "description": "Grand Theft Auto VI returns to the state of Leonida, bringing Jason and Lucia into a new Vice City story.", "content": "Grand Theft Auto VI is set in Leonida and features Jason and Lucia. Vice Wire will track major announcements, trailers, screenshots and release updates.", "date": "2026", "views": 1000})'>Read the full story</button>
+  </div>
+</div>
+
+    <div class="section-head">
+      <h2>The briefing</h2>
+      <p class="sub">Short, sourced updates on trailers, gameplay details and release logistics.</p>
+    </div>
+    <div class="controls">
+      <div class="filters" id="filterBar"><button class="filter-btn active" data-cat="all">All</button>
+<button class="filter-btn " data-cat="news">News</button>
+<button class="filter-btn " data-cat="characters">Characters</button>
+<button class="filter-btn " data-cat="gameplay">Gameplay</button>
+<button class="filter-btn " data-cat="release">Release</button>
+<button class="filter-btn " data-cat="trailers">Trailers</button></div>
+      <div class="search-box">
+        <input type="text" id="newsSearch" placeholder="Search the briefing…" oninput="filterNews()">
+      </div>
+    </div>
+    <div class="news-layout">
+      <div class="news-list" id="newsList"><button class="news-row" data-category="characters" data-title="jason and lucia take center stage" onclick='openArticle({"id": 2, "title": "Jason and Lucia take center stage", "category": "Characters", "description": "The two protagonists are at the heart of the next GTA story, with their relationship shaping the journey through Leonida.", "content": "Jason and Lucia are the central protagonists of GTA VI. Follow Vice Wire for character details and official reveals.", "date": "2026", "views": 900}, this)'>
+  <div class="news-thumb"><img src="data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20400%20300%22%3E%0A%3Cdefs%3E%3ClinearGradient%20id%3D%22gstatic%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%0A%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%23ff3d7a%22/%3E%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%237c4dff%22/%3E%0A%3C/linearGradient%3E%3C/defs%3E%3Crect%20width%3D%22400%22%20height%3D%22300%22%20fill%3D%22%230d0f18%22/%3E%0A%3Crect%20width%3D%22400%22%20height%3D%22300%22%20fill%3D%22url%28%23gstatic%29%22%20opacity%3D%22.28%22/%3E%0A%3Cline%20x1%3D%220%22%20y1%3D%22210%22%20x2%3D%22400%22%20y2%3D%22210%22%20stroke%3D%22%23ff3d7a%22%20stroke-opacity%3D%22.5%22/%3E%0A%3Cline%20x1%3D%220%22%20y1%3D%22235%22%20x2%3D%22400%22%20y2%3D%22235%22%20stroke%3D%22%23ff3d7a%22%20stroke-opacity%3D%22.35%22/%3E%0A%3Cline%20x1%3D%220%22%20y1%3D%22265%22%20x2%3D%22400%22%20y2%3D%22265%22%20stroke%3D%22%23ff3d7a%22%20stroke-opacity%3D%22.2%22/%3E%0A%3C/svg%3E" alt="Jason and Lucia take center stage" loading="lazy" data-news-id="2"></div>
+  <div class="news-row-body">
+    <div class="news-meta-line"><span class="news-cat">Characters</span><span class="news-date">2026</span></div>
+    <h4>Jason and Lucia take center stage</h4>
+    <p>The two protagonists are at the heart of the next GTA story, with their relationship shaping the journey through Leonida.</p>
+  </div>
+</button>
+<button class="news-row" data-category="gameplay" data-title="leonida brings more than vice city" onclick='openArticle({"id": 3, "title": "Leonida brings more than Vice City", "category": "Gameplay", "description": "The new game expands the setting beyond the familiar city with a broader Leonida region.", "content": "Leonida is the wider setting for GTA VI, with Vice City at its center. More official details will be added as Rockstar reveals them.", "date": "2026", "views": 850}, this)'>
+  <div class="news-thumb"><img src="data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20400%20300%22%3E%0A%3Cdefs%3E%3ClinearGradient%20id%3D%22gstatic%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%0A%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%23ff3d7a%22/%3E%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%237c4dff%22/%3E%0A%3C/linearGradient%3E%3C/defs%3E%3Crect%20width%3D%22400%22%20height%3D%22300%22%20fill%3D%22%230d0f18%22/%3E%0A%3Crect%20width%3D%22400%22%20height%3D%22300%22%20fill%3D%22url%28%23gstatic%29%22%20opacity%3D%22.28%22/%3E%0A%3Cline%20x1%3D%220%22%20y1%3D%22210%22%20x2%3D%22400%22%20y2%3D%22210%22%20stroke%3D%22%23ff3d7a%22%20stroke-opacity%3D%22.5%22/%3E%0A%3Cline%20x1%3D%220%22%20y1%3D%22235%22%20x2%3D%22400%22%20y2%3D%22235%22%20stroke%3D%22%23ff3d7a%22%20stroke-opacity%3D%22.35%22/%3E%0A%3Cline%20x1%3D%220%22%20y1%3D%22265%22%20x2%3D%22400%22%20y2%3D%22265%22%20stroke%3D%22%23ff3d7a%22%20stroke-opacity%3D%22.2%22/%3E%0A%3C/svg%3E" alt="Leonida brings more than Vice City" loading="lazy" data-news-id="3"></div>
+  <div class="news-row-body">
+    <div class="news-meta-line"><span class="news-cat">Gameplay</span><span class="news-date">2026</span></div>
+    <h4>Leonida brings more than Vice City</h4>
+    <p>The new game expands the setting beyond the familiar city with a broader Leonida region.</p>
+  </div>
+</button>
+<button class="news-row" data-category="release" data-title="gta vi countdown is officially on" onclick='openArticle({"id": 4, "title": "GTA VI countdown is officially on", "category": "Release", "description": "Vice Wire is counting down to the announced November 19, 2026 release date.", "content": "The countdown on this page runs in real time toward November 19, 2026.", "date": "2026", "views": 800}, this)'>
+  <div class="news-thumb"><img src="data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20400%20300%22%3E%0A%3Cdefs%3E%3ClinearGradient%20id%3D%22gstatic%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%0A%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%23ff3d7a%22/%3E%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%237c4dff%22/%3E%0A%3C/linearGradient%3E%3C/defs%3E%3Crect%20width%3D%22400%22%20height%3D%22300%22%20fill%3D%22%230d0f18%22/%3E%0A%3Crect%20width%3D%22400%22%20height%3D%22300%22%20fill%3D%22url%28%23gstatic%29%22%20opacity%3D%22.28%22/%3E%0A%3Cline%20x1%3D%220%22%20y1%3D%22210%22%20x2%3D%22400%22%20y2%3D%22210%22%20stroke%3D%22%23ff3d7a%22%20stroke-opacity%3D%22.5%22/%3E%0A%3Cline%20x1%3D%220%22%20y1%3D%22235%22%20x2%3D%22400%22%20y2%3D%22235%22%20stroke%3D%22%23ff3d7a%22%20stroke-opacity%3D%22.35%22/%3E%0A%3Cline%20x1%3D%220%22%20y1%3D%22265%22%20x2%3D%22400%22%20y2%3D%22265%22%20stroke%3D%22%23ff3d7a%22%20stroke-opacity%3D%22.2%22/%3E%0A%3C/svg%3E" alt="GTA VI countdown is officially on" loading="lazy" data-news-id="4"></div>
+  <div class="news-row-body">
+    <div class="news-meta-line"><span class="news-cat">Release</span><span class="news-date">2026</span></div>
+    <h4>GTA VI countdown is officially on</h4>
+    <p>Vice Wire is counting down to the announced November 19, 2026 release date.</p>
+  </div>
+</button>
+<button class="news-row" data-category="trailers" data-title="official gta vi trailers" onclick='openArticle({"id": 5, "title": "Official GTA VI trailers", "category": "Trailers", "description": "Watch the official GTA VI videos directly from YouTube without re-uploading the footage.", "content": "Vice Wire embeds official YouTube videos so visitors can watch the trailers while keeping the original source intact.", "date": "2026", "views": 750}, this)'>
+  <div class="news-thumb"><img src="data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20400%20300%22%3E%0A%3Cdefs%3E%3ClinearGradient%20id%3D%22gstatic%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%0A%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%23ff3d7a%22/%3E%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%237c4dff%22/%3E%0A%3C/linearGradient%3E%3C/defs%3E%3Crect%20width%3D%22400%22%20height%3D%22300%22%20fill%3D%22%230d0f18%22/%3E%0A%3Crect%20width%3D%22400%22%20height%3D%22300%22%20fill%3D%22url%28%23gstatic%29%22%20opacity%3D%22.28%22/%3E%0A%3Cline%20x1%3D%220%22%20y1%3D%22210%22%20x2%3D%22400%22%20y2%3D%22210%22%20stroke%3D%22%23ff3d7a%22%20stroke-opacity%3D%22.5%22/%3E%0A%3Cline%20x1%3D%220%22%20y1%3D%22235%22%20x2%3D%22400%22%20y2%3D%22235%22%20stroke%3D%22%23ff3d7a%22%20stroke-opacity%3D%22.35%22/%3E%0A%3Cline%20x1%3D%220%22%20y1%3D%22265%22%20x2%3D%22400%22%20y2%3D%22265%22%20stroke%3D%22%23ff3d7a%22%20stroke-opacity%3D%22.2%22/%3E%0A%3C/svg%3E" alt="Official GTA VI trailers" loading="lazy" data-news-id="5"></div>
+  <div class="news-row-body">
+    <div class="news-meta-line"><span class="news-cat">Trailers</span><span class="news-date">2026</span></div>
+    <h4>Official GTA VI trailers</h4>
+    <p>Watch the official GTA VI videos directly from YouTube without re-uploading the footage.</p>
+  </div>
+</button>
+<button class="news-row" data-category="news" data-title="follow every gta vi update in one place" onclick='openArticle({"id": 6, "title": "Follow every GTA VI update in one place", "category": "News", "description": "News, screenshots, trailers and release information are collected into one fan-run GTA VI briefing.", "content": "Use the briefing, search, filters, gallery and countdown to keep track of the road to GTA VI.", "date": "2026", "views": 700}, this)'>
+  <div class="news-thumb"><img src="data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20400%20300%22%3E%0A%3Cdefs%3E%3ClinearGradient%20id%3D%22gstatic%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%0A%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%23ff3d7a%22/%3E%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%237c4dff%22/%3E%0A%3C/linearGradient%3E%3C/defs%3E%3Crect%20width%3D%22400%22%20height%3D%22300%22%20fill%3D%22%230d0f18%22/%3E%0A%3Crect%20width%3D%22400%22%20height%3D%22300%22%20fill%3D%22url%28%23gstatic%29%22%20opacity%3D%22.28%22/%3E%0A%3Cline%20x1%3D%220%22%20y1%3D%22210%22%20x2%3D%22400%22%20y2%3D%22210%22%20stroke%3D%22%23ff3d7a%22%20stroke-opacity%3D%22.5%22/%3E%0A%3Cline%20x1%3D%220%22%20y1%3D%22235%22%20x2%3D%22400%22%20y2%3D%22235%22%20stroke%3D%22%23ff3d7a%22%20stroke-opacity%3D%22.35%22/%3E%0A%3Cline%20x1%3D%220%22%20y1%3D%22265%22%20x2%3D%22400%22%20y2%3D%22265%22%20stroke%3D%22%23ff3d7a%22%20stroke-opacity%3D%22.2%22/%3E%0A%3C/svg%3E" alt="Follow every GTA VI update in one place" loading="lazy" data-news-id="6"></div>
+  <div class="news-row-body">
+    <div class="news-meta-line"><span class="news-cat">News</span><span class="news-date">2026</span></div>
+    <h4>Follow every GTA VI update in one place</h4>
+    <p>News, screenshots, trailers and release information are collected into one fan-run GTA VI briefing.</p>
+  </div>
+</button></div>
+      <aside>
+        <div class="aside-block">
+          <h3>Most read</h3>
+          <div id="trendingList"><button class="rank-item" onclick='openArticle({"id": 1, "title": "Grand Theft Auto VI is headed back to Vice City", "category": "News", "description": "Grand Theft Auto VI returns to the state of Leonida, bringing Jason and Lucia into a new Vice City story.", "content": "Grand Theft Auto VI is set in Leonida and features Jason and Lucia. Vice Wire will track major announcements, trailers, screenshots and release updates.", "date": "2026", "views": 1000})'>
+  <div class="rank-num">01</div>
+  <div class="rank-title">Grand Theft Auto VI is headed back to Vice City</div>
+</button>
+<button class="rank-item" onclick='openArticle({"id": 2, "title": "Jason and Lucia take center stage", "category": "Characters", "description": "The two protagonists are at the heart of the next GTA story, with their relationship shaping the journey through Leonida.", "content": "Jason and Lucia are the central protagonists of GTA VI. Follow Vice Wire for character details and official reveals.", "date": "2026", "views": 900})'>
+  <div class="rank-num">02</div>
+  <div class="rank-title">Jason and Lucia take center stage</div>
+</button>
+<button class="rank-item" onclick='openArticle({"id": 3, "title": "Leonida brings more than Vice City", "category": "Gameplay", "description": "The new game expands the setting beyond the familiar city with a broader Leonida region.", "content": "Leonida is the wider setting for GTA VI, with Vice City at its center. More official details will be added as Rockstar reveals them.", "date": "2026", "views": 850})'>
+  <div class="rank-num">03</div>
+  <div class="rank-title">Leonida brings more than Vice City</div>
+</button>
+<button class="rank-item" onclick='openArticle({"id": 4, "title": "GTA VI countdown is officially on", "category": "Release", "description": "Vice Wire is counting down to the announced November 19, 2026 release date.", "content": "The countdown on this page runs in real time toward November 19, 2026.", "date": "2026", "views": 800})'>
+  <div class="rank-num">04</div>
+  <div class="rank-title">GTA VI countdown is officially on</div>
+</button>
+<button class="rank-item" onclick='openArticle({"id": 5, "title": "Official GTA VI trailers", "category": "Trailers", "description": "Watch the official GTA VI videos directly from YouTube without re-uploading the footage.", "content": "Vice Wire embeds official YouTube videos so visitors can watch the trailers while keeping the original source intact.", "date": "2026", "views": 750})'>
+  <div class="rank-num">05</div>
+  <div class="rank-title">Official GTA VI trailers</div>
+</button></div>
+        </div>
+        <div class="aside-block quick-links">
+          <h3>Jump to</h3>
+          <a href="#videos">Official trailers</a>
+          <a href="#gallery">Screenshot gallery</a>
+          <a href="#release">Release information</a>
+        </div>
+        <div class="notify-card" id="notify">
+          <h3>Get the drop first</h3>
+          <p>One email whenever a new trailer, screenshot batch or release update goes live. No spam, unsubscribe anytime.</p>
+          <form class="notify-form" onsubmit="return handleSubscribe(event)">
+            <input type="email" required placeholder="you@email.com" aria-label="Email address">
+            <button type="submit">Join</button>
+          </form>
+          <div class="notify-note">Static version: subscriptions need an external form service or backend.</div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- =====================================================
+     VIDEOS
+     ===================================================== -->
+<section class="section" id="videos">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Official trailers</h2>
+      <p class="sub">Embedded straight from Rockstar Games' channel.</p>
+    </div>
+    <div class="video-grid">
+      <div class="video-card">
+        <div class="video-frame"><iframe src="https://www.youtube.com/embed/QdBZY2fkU-0" title="Grand Theft Auto VI Trailer 1" allowfullscreen loading="lazy"></iframe></div>
+        <div class="video-info"><h4>Trailer 1</h4><p>The reveal that introduced Leonida, Jason and Lucia.</p></div>
+      </div>
+      <div class="video-card">
+        <div class="video-frame"><iframe src="https://www.youtube.com/embed/VQRLujxTm3c" title="Grand Theft Auto VI Trailer 2" allowfullscreen loading="lazy"></iframe></div>
+        <div class="video-info"><h4>Trailer 2</h4><p>A deeper look at the map, tone and supporting cast.</p></div>
+      </div>
+      <div class="video-card">
+        <div class="video-frame"><iframe src="https://www.youtube.com/embed/tJbzMqJGH4k" title="Grand Theft Auto VI Extended Look" allowfullscreen loading="lazy"></iframe></div>
+        <div class="video-info"><h4>Extended look</h4><p>Rockstar's longer-form breakdown of the world.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =====================================================
+     SCREENSHOTS
+     ===================================================== -->
+<section class="section" id="gallery">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Screenshot gallery</h2>
+      <p class="sub"><span id="galleryCount">Loading</span> images from <code>/screenshots</code>.</p>
+    </div>
+    <div class="shot-grid" id="shotGrid"></div>
+  </div>
+</section>
+
+<!-- =====================================================
+     RELEASE INFO
+     ===================================================== -->
+<section class="section" id="release">
+  <div class="wrap">
+    <div class="section-head"><h2>Release information</h2></div>
+    <div class="release-panel">
+      <div class="release-cell"><span>RELEASE DATE</span><strong>November 19, 2026</strong></div>
+      <div class="release-cell"><span>PLATFORMS</span><strong>PS5 &amp; Xbox Series X|S</strong></div>
+      <div class="release-cell"><span>PRIMARY SETTING</span><strong>Leonida</strong></div>
+      <div class="release-cell"><span>PROTAGONISTS</span><strong>Jason &amp; Lucia</strong></div>
+    </div>
+  </div>
+</section>
+
+<!-- =====================================================
+     ARTICLE MODAL
+     ===================================================== -->
+<div class="modal" id="articleModal" onclick="closeArticle(event)">
+  <div class="modal-panel" onclick="event.stopPropagation()">
+    <button class="modal-close" onclick="closeArticle()">×</button>
+    <div class="tag-chip" id="modalCategory"></div>
+    <h2 id="modalTitle"></h2>
+    <div class="modal-date" id="modalDate"></div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<!-- =====================================================
+     LIGHTBOX
+     ===================================================== -->
+<div class="lightbox" id="lightbox" onclick="closeScreenshot(event)">
+  <button class="lightbox-close" onclick="closeScreenshot()">×</button>
+  <img id="lightboxImage" src="" alt="GTA VI Screenshot">
+</div>
+
+<!-- =====================================================
+     TOASTS — celebratory / status feedback
+     ===================================================== -->
+<div class="toast-stack" id="toastStack" aria-live="polite"></div>
+
+<!-- =====================================================
+     FOOTER
+     ===================================================== -->
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#top" class="brand">VICE<span class="dot">·</span>WIRE</a>
+        <p>An independent, fan-run news outlet tracking Grand Theft Auto VI. Not affiliated with Rockstar Games or Take-Two Interactive.</p>
+        <p style="margin-top:14px;" class="db-flag"><span class="pip"></span> Static HTML · GitHub Pages ready</p>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <span>SECTIONS</span>
+          <a href="#news">Briefing</a>
+          <a href="#videos">Trailers</a>
+          <a href="#gallery">Gallery</a>
+          <a href="#release">Release</a>
+        </div>
+        <div class="footer-col">
+          <span>SITE</span>
+          <a href="#notify">Newsletter</a>
+          <a href="#top">Back to top</a>
+        </div>
+      </div>
+    </div>
+    <div class="hairline"></div>
+    <div class="footer-bottom">
+      <span>© 2026 Vice Wire. Grand Theft Auto and related marks are trademarks of Take-Two Interactive.</span>
+      <span>Built as an unofficial fan project.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* =========================================================
+   TOAST — quiet confirmation instead of alert()
+   ========================================================= */
+function showToast(message, type){
+  const stack = document.getElementById("toastStack");
+  const el = document.createElement("div");
+  el.className = "toast" + (type === "error" ? " error" : "");
+  el.innerHTML = `<span class="toast-icon">${type === "error" ? "⚠" : "✓"}</span><span>${message}</span>`;
+  stack.appendChild(el);
+  setTimeout(()=> el.remove(), 3600);
+}
+
+/* small-win celebration: a short sparkle burst from a button */
+function spawnSparkles(btn){
+  const rect = btn.getBoundingClientRect();
+  const field = document.createElement("div");
+  field.className = "sparkle-field";
+  field.style.position = "fixed";
+  field.style.left = rect.left + "px";
+  field.style.top = rect.top + "px";
+  field.style.width = rect.width + "px";
+  field.style.height = rect.height + "px";
+  field.style.zIndex = 5000;
+  document.body.appendChild(field);
+
+  const colors = ["#22d3c5", "#ff8a4c", "#ff3d7a"];
+  for(let i=0; i<10; i++){
+    const s = document.createElement("span");
+    s.className = "sparkle";
+    const angle = (Math.PI * 2 * i) / 10;
+    const dist = 30 + Math.random()*24;
+    s.style.left = (rect.width/2) + "px";
+    s.style.top = (rect.height/2) + "px";
+    s.style.background = colors[i % colors.length];
+    s.style.setProperty("--sx", Math.cos(angle)*dist + "px");
+    s.style.setProperty("--sy", Math.sin(angle)*dist + "px");
+    field.appendChild(s);
+  }
+  setTimeout(()=> field.remove(), 750);
+}
+
+function flashSuccess(btn, tempLabel){
+  const original = btn.innerHTML;
+  btn.classList.add("is-success");
+  btn.innerHTML = tempLabel;
+  spawnSparkles(btn);
+  setTimeout(()=>{
+    btn.classList.remove("is-success");
+    btn.innerHTML = original;
+  }, 1600);
+}
+
+/* =========================================================
+   COUNTDOWN — real flip-clock digits (front/back faces rotate
+   in 3D on every change) plus a rotating tagline underneath.
+   ========================================================= */
+const releaseDate = new Date("November 19, 2026 00:00:00").getTime();
+let lastCountdownValues = { days:null, hours:null, minutes:null, seconds:null };
+
+function flipTo(unitId, newText){
+  const card = document.getElementById("flip-" + unitId);
+  if(!card) return;
+  const front = card.querySelector(".front");
+  const back = card.querySelector(".back");
+
+  if(front.textContent === newText) return;
+
+  back.textContent = newText;
+  card.classList.add("flip");
+
+  const settle = () => {
+    card.classList.remove("flip");
+    front.textContent = newText;
+    card.removeEventListener("transitionend", settle);
+  };
+  card.addEventListener("transitionend", settle);
+}
+
+function updateCountdown(){
+  const dist = releaseDate - Date.now();
+  const values = dist <= 0
+    ? { days:0, hours:0, minutes:0, seconds:0 }
+    : {
+        days: Math.floor(dist/86400000),
+        hours: Math.floor((dist%86400000)/3600000),
+        minutes: Math.floor((dist%3600000)/60000),
+        seconds: Math.floor((dist%60000)/1000)
+      };
+
+  Object.keys(values).forEach(key=>{
+    if(lastCountdownValues[key] !== values[key]){
+      flipTo(key, String(values[key]).padStart(2, '0'));
+      lastCountdownValues[key] = values[key];
+    }
+  });
+}
+updateCountdown();
+setInterval(updateCountdown, 1000);
+
+/* rotating tagline — a little personality, not just a number */
+const COUNTDOWN_TAGLINES = [
+  "Vice City is warming up the neon.",
+  "Somewhere, an alligator is rehearsing its cameo.",
+  "Jason and Lucia are already packed.",
+  "Every second, someone refreshes this page for no reason.",
+  "The waiting room of the decade."
+];
+let taglineIndex = 0;
+function rotateTagline(){
+  const el = document.getElementById("cbTagline");
+  if(!el) return;
+  taglineIndex = (taglineIndex + 1) % COUNTDOWN_TAGLINES.length;
+  el.style.animation = "none";
+  void el.offsetWidth;
+  el.textContent = COUNTDOWN_TAGLINES[taglineIndex];
+  el.style.animation = "";
+}
+setInterval(rotateTagline, 4500);
+
+/* =========================================================
+   ADD TO CALENDAR
+   ========================================================= */
+const RELEASE_START_UTC = "20261119T000000Z";
+const RELEASE_END_UTC   = "20261120T000000Z";
+const RELEASE_TITLE = "Grand Theft Auto VI Release";
+const RELEASE_DETAILS = "Grand Theft Auto VI launches today. Tracked by Vice Wire.";
+const RELEASE_LOCATION = "PS5 & Xbox Series X|S";
+
+function toggleCalMenu(e){
+  e.stopPropagation();
+  const menu = document.getElementById("calMenu");
+  const arrow = document.getElementById("calArrow");
+  menu.classList.toggle("show");
+  arrow.textContent = menu.classList.contains("show") ? "▴" : "▾";
+}
+document.addEventListener("click", ()=>{
+  const menu = document.getElementById("calMenu");
+  menu.classList.remove("show");
+  const arrow = document.getElementById("calArrow");
+  if(arrow) arrow.textContent = "▾";
+});
+
+function addToGoogle(e){
+  e.preventDefault();
+  const url = "https://calendar.google.com/calendar/render?action=TEMPLATE"
+    + "&text=" + encodeURIComponent(RELEASE_TITLE)
+    + "&dates=" + RELEASE_START_UTC + "/" + RELEASE_END_UTC
+    + "&details=" + encodeURIComponent(RELEASE_DETAILS)
+    + "&location=" + encodeURIComponent(RELEASE_LOCATION);
+  window.open(url, "_blank");
+  showToast("Opening Google Calendar…");
+  return false;
+}
+
+function addToOutlook(e){
+  e.preventDefault();
+  const url = "https://outlook.live.com/calendar/0/deeplink/compose?"
+    + "subject=" + encodeURIComponent(RELEASE_TITLE)
+    + "&startdt=2026-11-19T00:00:00Z&enddt=2026-11-20T00:00:00Z"
+    + "&body=" + encodeURIComponent(RELEASE_DETAILS)
+    + "&location=" + encodeURIComponent(RELEASE_LOCATION);
+  window.open(url, "_blank");
+  showToast("Opening Outlook.com…");
+  return false;
+}
+
+function toICSDate(d){
+  return d.toISOString().replace(/[-:]/g, "").split(".")[0] + "Z";
+}
+
+function downloadICS(e){
+  const ics = [
+    "BEGIN:VCALENDAR",
+    "VERSION:2.0",
+    "PRODID:-//Vice Wire//GTA VI//EN",
+    "BEGIN:VEVENT",
+    "UID:" + Date.now() + "@vicewire",
+    "DTSTAMP:" + toICSDate(new Date()),
+    "DTSTART:" + RELEASE_START_UTC,
+    "DTEND:" + RELEASE_END_UTC,
+    "SUMMARY:" + RELEASE_TITLE,
+    "DESCRIPTION:" + RELEASE_DETAILS,
+    "LOCATION:" + RELEASE_LOCATION,
+    "END:VEVENT",
+    "END:VCALENDAR"
+  ].join("\r\n");
+
+  const blob = new Blob([ics], { type: "text/calendar" });
+  const link = document.createElement("a");
+  link.href = URL.createObjectURL(blob);
+  link.download = "gta6-release.ics";
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  URL.revokeObjectURL(link.href);
+
+  document.getElementById("calMenu").classList.remove("show");
+  showToast("Calendar file downloaded — open it to add the event.");
+}
+
+/* =========================================================
+   FILTER + SEARCH (server-rendered rows, client-side filter)
+   ========================================================= */
+document.querySelectorAll(".filter-btn").forEach(btn=>{
+  btn.addEventListener("click", ()=>{
+    document.querySelectorAll(".filter-btn").forEach(b=>b.classList.remove("active"));
+    btn.classList.add("active");
+    filterNews();
+  });
+});
+
+function filterNews(){
+  const activeBtn = document.querySelector(".filter-btn.active");
+  const type = activeBtn ? activeBtn.dataset.cat : "all";
+  const search = document.getElementById("newsSearch").value.toLowerCase().trim();
+
+  document.querySelectorAll(".news-row").forEach(row=>{
+    const category = row.dataset.category || "";
+    const title = row.dataset.title || "";
+    const text = row.innerText.toLowerCase();
+
+    const catMatch = type === "all" || category === type;
+    const searchMatch = !search || title.includes(search) || text.includes(search);
+
+    row.style.display = (catMatch && searchMatch) ? "" : "none";
+  });
+}
+
+/* =========================================================
+   ARTICLE MODAL
+   ========================================================= */
+function openArticle(article, btn){
+  if(btn){
+    btn.classList.add("clicked");
+    setTimeout(()=> btn.classList.remove("clicked"), 500);
+  }
+  const title = article.title || "GTA VI News";
+  const category = article.category || "News";
+  const date = article.date || article.created_at || "";
+  const body = article.content || article.description || "No article content available.";
+
+  document.getElementById("modalTitle").textContent = title;
+  document.getElementById("modalCategory").textContent = category;
+  document.getElementById("modalDate").textContent = date;
+  document.getElementById("modalBody").textContent = body;
+
+  document.getElementById("articleModal").classList.add("show");
+  document.body.style.overflow = "hidden";
+}
+function closeArticle(event){
+  const modal = document.getElementById("articleModal");
+  if(event && event.target !== modal) return;
+  modal.classList.remove("show");
+  document.body.style.overflow = "";
+}
+
+/* =========================================================
+   SCREENSHOT LIGHTBOX
+   ========================================================= */
+function openScreenshot(src){
+  document.getElementById("lightboxImage").src = src;
+  document.getElementById("lightbox").classList.add("show");
+  document.body.style.overflow = "hidden";
+}
+function closeScreenshot(event){
+  const lightbox = document.getElementById("lightbox");
+  if(event && event.target !== lightbox) return;
+  lightbox.classList.remove("show");
+  document.body.style.overflow = "";
+  document.getElementById("lightboxImage").src = "";
+}
+
+document.addEventListener("keydown", e=>{
+  if(e.key === "Escape"){ closeArticle(); closeScreenshot(); }
+});
+
+/* =========================================================
+   NEWSLETTER — static GitHub Pages version
+   ========================================================= */
+function handleSubscribe(e){
+  e.preventDefault();
+  const form = e.target;
+  const input = form.querySelector("input");
+  const btn = form.querySelector("button");
+  const email = input.value.trim();
+
+  if(!email){
+    showToast("Enter a valid email address.", "error");
+    return false;
+  }
+
+  btn.disabled = true;
+  btn.textContent = "…";
+
+  setTimeout(()=>{
+    input.value = "";
+    btn.disabled = false;
+    flashSuccess(btn, "Added ✓");
+    showToast("You're on the list — connect a form service to store subscribers.");
+  }, 650);
+
+  return false;
+}
+
+/* =========================================================
+   MOBILE NAV
+   ========================================================= */
+document.getElementById("navToggle").addEventListener("click", ()=>{
+  const links = document.querySelector(".nav-links");
+  const shown = links.style.display === "flex";
+  links.style.cssText = shown ? "" : "display:flex; position:absolute; top:76px; left:0; right:0; flex-direction:column; background:rgba(6,7,11,.97); padding:20px; gap:18px; border-bottom:1px solid var(--line);";
+});
+
+/* =========================================================
+   STATIC NEWS DATA
+   ========================================================= */
+const NEWS_ITEMS = [{"id": 1, "title": "Grand Theft Auto VI is headed back to Vice City", "category": "News", "description": "Grand Theft Auto VI returns to the state of Leonida, bringing Jason and Lucia into a new Vice City story.", "content": "Grand Theft Auto VI is set in Leonida and features Jason and Lucia. Vice Wire will track major announcements, trailers, screenshots and release updates.", "date": "2026", "views": 1000}, {"id": 2, "title": "Jason and Lucia take center stage", "category": "Characters", "description": "The two protagonists are at the heart of the next GTA story, with their relationship shaping the journey through Leonida.", "content": "Jason and Lucia are the central protagonists of GTA VI. Follow Vice Wire for character details and official reveals.", "date": "2026", "views": 900}, {"id": 3, "title": "Leonida brings more than Vice City", "category": "Gameplay", "description": "The new game expands the setting beyond the familiar city with a broader Leonida region.", "content": "Leonida is the wider setting for GTA VI, with Vice City at its center. More official details will be added as Rockstar reveals them.", "date": "2026", "views": 850}, {"id": 4, "title": "GTA VI countdown is officially on", "category": "Release", "description": "Vice Wire is counting down to the announced November 19, 2026 release date.", "content": "The countdown on this page runs in real time toward November 19, 2026.", "date": "2026", "views": 800}, {"id": 5, "title": "Official GTA VI trailers", "category": "Trailers", "description": "Watch the official GTA VI videos directly from YouTube without re-uploading the footage.", "content": "Vice Wire embeds official YouTube videos so visitors can watch the trailers while keeping the original source intact.", "date": "2026", "views": 750}, {"id": 6, "title": "Follow every GTA VI update in one place", "category": "News", "description": "News, screenshots, trailers and release information are collected into one fan-run GTA VI briefing.", "content": "Use the briefing, search, filters, gallery and countdown to keep track of the road to GTA VI.", "date": "2026", "views": 700}];
+
+/* =========================================================
+   GALLERY — GitHub Pages compatible
+   Reads the public screenshots folder through GitHub's API.
+   If the API is unavailable, the gallery simply stays usable.
+   ========================================================= */
+const GITHUB_SCREENSHOTS_API =
+  "https://api.github.com/repos/Manasseh10001/Gta6/contents/screenshots";
+
+async function loadGallery(){
+  const grid = document.getElementById("shotGrid");
+  const count = document.getElementById("galleryCount");
+  if(!grid) return;
+
+  try{
+    const response = await fetch(GITHUB_SCREENSHOTS_API, {
+      headers: { "Accept": "application/vnd.github+json" }
+    });
+    if(!response.ok) throw new Error("GitHub API unavailable");
+
+    const files = await response.json();
+    const images = files.filter(file =>
+      file.type === "file" && /\.(jpg|jpeg|png|webp)$/i.test(file.name)
+    );
+
+    count.textContent = images.length;
+    grid.innerHTML = "";
+
+    images.forEach(file=>{
+      const button = document.createElement("button");
+      button.className = "shot";
+      button.onclick = () => openScreenshot(file.download_url);
+
+      const img = document.createElement("img");
+      img.src = file.download_url;
+      img.alt = file.name.replace(/\.[^.]+$/, "");
+      img.loading = "lazy";
+
+      const tag = document.createElement("div");
+      tag.className = "shot-tag";
+      tag.textContent = file.name.replace(/\.[^.]+$/, "");
+
+      button.appendChild(img);
+      button.appendChild(tag);
+      grid.appendChild(button);
+    });
+
+    if(!images.length){
+      count.textContent = "0";
+      grid.innerHTML = '<div class="empty-state">Add JPG, JPEG, PNG or WEBP files to the repository <code>/screenshots</code> folder.</div>';
+    }
+  }catch(error){
+    count.textContent = "—";
+    grid.innerHTML = '<div class="empty-state">Gallery could not load automatically. Make sure the <code>screenshots</code> folder is public.</div>';
+  }
+}
+
+loadGallery();
+
+</script>
+</body>
+</html>
+
