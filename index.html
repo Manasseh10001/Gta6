@@ -520,8 +520,7 @@ footer{ border-top:1px solid var(--line-soft); padding:56px 32px 40px; }
           </button>
           <div class="cal-menu" id="calMenu">
             <a href="#" onclick="return addToGoogle(event)">Google Calendar</a>
-            <a href="#" onclick="return addToOutlook(event)">Outlook.com</a>
-            <button type="button" onclick="downloadICS(event)">Download .ics (Apple / other)</button>
+            <a href="#" onclick="return addToApple(event)">Apple Calendar</a>
           </div>
         </div>
       </div>
@@ -934,7 +933,9 @@ function rotateTagline(){
 setInterval(rotateTagline, 4500);
 
 /* =========================================================
-   ADD TO CALENDAR
+   ADD TO CALENDAR — Google + Apple, no file downloads.
+   Both hand off via URL navigation so the OS/browser decides
+   whether to open the native calendar app or a web page.
    ========================================================= */
 const RELEASE_START_UTC = "20261119T000000Z";
 const RELEASE_END_UTC   = "20261120T000000Z";
@@ -963,20 +964,11 @@ function addToGoogle(e){
     + "&dates=" + RELEASE_START_UTC + "/" + RELEASE_END_UTC
     + "&details=" + encodeURIComponent(RELEASE_DETAILS)
     + "&location=" + encodeURIComponent(RELEASE_LOCATION);
+  // On Android with the Google Calendar app installed, this link is
+  // usually intercepted straight into the app. Elsewhere it opens the web UI.
   window.open(url, "_blank");
+  document.getElementById("calMenu").classList.remove("show");
   showToast("Opening Google Calendar…");
-  return false;
-}
-
-function addToOutlook(e){
-  e.preventDefault();
-  const url = "https://outlook.live.com/calendar/0/deeplink/compose?"
-    + "subject=" + encodeURIComponent(RELEASE_TITLE)
-    + "&startdt=2026-11-19T00:00:00Z&enddt=2026-11-20T00:00:00Z"
-    + "&body=" + encodeURIComponent(RELEASE_DETAILS)
-    + "&location=" + encodeURIComponent(RELEASE_LOCATION);
-  window.open(url, "_blank");
-  showToast("Opening Outlook.com…");
   return false;
 }
 
@@ -984,8 +976,8 @@ function toICSDate(d){
   return d.toISOString().replace(/[-:]/g, "").split(".")[0] + "Z";
 }
 
-function downloadICS(e){
-  const ics = [
+function buildICS(){
+  return [
     "BEGIN:VCALENDAR",
     "VERSION:2.0",
     "PRODID:-//Vice Wire//GTA VI//EN",
@@ -1000,18 +992,18 @@ function downloadICS(e){
     "END:VEVENT",
     "END:VCALENDAR"
   ].join("\r\n");
+}
 
-  const blob = new Blob([ics], { type: "text/calendar" });
-  const link = document.createElement("a");
-  link.href = URL.createObjectURL(blob);
-  link.download = "gta6-release.ics";
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-  URL.revokeObjectURL(link.href);
-
+function addToApple(e){
+  e.preventDefault();
+  const ics = buildICS();
+  // No <a download> and no Blob save-as here — just navigate to a
+  // text/calendar data URI. iOS/iPadOS/macOS Safari hand this straight
+  // to Calendar.app's "Add Event" sheet instead of saving a file.
+  window.location.href = "data:text/calendar;charset=utf-8," + encodeURIComponent(ics);
   document.getElementById("calMenu").classList.remove("show");
-  showToast("Calendar file downloaded — open it to add the event.");
+  showToast("Opening Calendar…");
+  return false;
 }
 
 /* =========================================================
@@ -1193,4 +1185,3 @@ loadGallery();
 </script>
 </body>
 </html>
-
